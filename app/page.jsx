@@ -17,11 +17,14 @@ export default function Home() {
               alt="user photo"
             />
           </a>
-          <a className="h-32 rounded-lg bg-gray-200" href="/calender">
+          <a
+            className="h-32 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
+            href="/Calendar"
+          >
             kalender
           </a>
-          <div className="h-32 rounded-lg bg-gray-200">
-            <article class="flex items-center gap-4 rounded-lg border-2 border-gray-300 bg-gray-50 p-6 sm:justify-between">
+          <div>
+            <article class="flex items-center gap-4 h-32 rounded-lg border-2 border-gray-200 bg-gray-50 p-6 sm:justify-between">
               <span class="rounded-full bg-blue-100 p-3 text-blue-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +49,14 @@ export default function Home() {
               </div>
             </article>
           </div>
-          <div className="h-32 rounded-lg bg-gray-200">settings</div>
-          <div className="h-32 rounded-lg bg-gray-200">contact</div>
-          <div className="h-32 rounded-lg bg-gray-200">
-            <article class="flex items-center gap-4 rounded-lg border-2 border-gray-300 bg-gray-50 p-6 sm:justify-between">
+          <div className="h-32 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
+            settings
+          </div>
+          <div className="h-32 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
+            contact
+          </div>
+          <div>
+            <article class="flex items-center gap-4 rounded-lg h-32 border-2 border-gray-200 bg-gray-50 p-6 sm:justify-between">
               <span class="rounded-full bg-blue-100 p-3 text-blue-600 sm:order-last">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
