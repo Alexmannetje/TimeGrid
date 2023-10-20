@@ -73,7 +73,7 @@ export default function NavBar() {
           >
             <img
               className="w-8 h-8 rounded-full"
-              src="/public/pfp.png"
+              src="/pfp.png"
               alt="user photo"
             />
           </a>

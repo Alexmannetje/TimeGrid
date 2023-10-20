@@ -6,12 +6,22 @@ export default function Home() {
       <NavBar />
       <div className="container mx-auto flex justify-between">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-16 flex-1">
-          <a className="h-32 rounded-lg bg-gray-200" href="/login">
+          <a
+            className="h-32 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
+            href="/login"
+          >
             profile
+            <img
+              className="w-24 h-24 border-2 border-gray-400 rounded-full"
+              src="/pfp.png"
+              alt="user photo"
+            />
           </a>
-          <div className="h-32 rounded-lg bg-gray-200">calender</div>
+          <a className="h-32 rounded-lg bg-gray-200" href="/calender">
+            kalender
+          </a>
           <div className="h-32 rounded-lg bg-gray-200">
-            <article class="flex items-center gap-4 rounded-lg border border-gray-100 bg-white p-6">
+            <article class="flex items-center gap-4 rounded-lg border-2 border-gray-300 bg-gray-50 p-6 sm:justify-between">
               <span class="rounded-full bg-blue-100 p-3 text-blue-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +49,7 @@ export default function Home() {
           <div className="h-32 rounded-lg bg-gray-200">settings</div>
           <div className="h-32 rounded-lg bg-gray-200">contact</div>
           <div className="h-32 rounded-lg bg-gray-200">
-            <article class="flex items-center  rounded-lg border border-gray-100 bg-white p-6 sm:justify-between">
+            <article class="flex items-center gap-4 rounded-lg border-2 border-gray-300 bg-gray-50 p-6 sm:justify-between">
               <span class="rounded-full bg-blue-100 p-3 text-blue-600 sm:order-last">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
