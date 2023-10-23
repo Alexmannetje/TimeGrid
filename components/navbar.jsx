@@ -4,9 +4,9 @@ export default function NavBar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="/pfp.png"
             className="h-8 mr-3"
-            alt="Flowbite Logo"
+            alt="Logo"
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             TimeGrid
@@ -23,7 +23,7 @@ export default function NavBar() {
           >
             <li>
               <a
-                href="#"
+                href="/"
                 className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                 aria-current="page"
               >
