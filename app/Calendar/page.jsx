@@ -1,6 +1,6 @@
 import NavBar from "@/components/navbar";
 
-export default function login() {
+export default function calendar() {
   return (
     <div>
       <NavBar />

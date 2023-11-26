@@ -5,8 +5,7 @@ export default function login() {
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden" style={{ backgroundImage: "url('/login_bg.png')", height: '400px' }}>
      
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
-      <a href="/" className="flex items-center justify-center
-      ">
+      <a href="/" className="flex items-center justify-center">
           <img
             src="/pfp.png"
             className="h-16 w-16 mr-3"
@@ -34,7 +33,7 @@ export default function login() {
               htmlFor="password"
               className="block text-sm font-semibold text-gray-800"
             >
-              Password
+              Wachtwoord
             </label>
             <input
               type="password"
@@ -45,17 +44,17 @@ export default function login() {
             href="/forget"
             className="text-xs text-blue-600 hover:underline"
           >
-            Forget Password?
+            Wachtwoord vergeten?
           </Link>
           <div className="mt-2">
             <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-              Sign In
+              Log in
             </button>
           </div>
         </form>
 
-        <div className="relative flex items-center justify-center w-full mt-6 border border-t">
-          <div className="absolute px-5 bg-white">Or</div>
+        <div className="relative flex items-center justify-center w-full my-6 border border-t">
+          <div className="absolute px-5 bg-white">Of</div>
         </div>
         <div className="flex mt-4 gap-x-2">
           <button
@@ -91,12 +90,12 @@ export default function login() {
         </div>
 
         <p className="mt-4 text-sm text-center text-gray-700">
-           have an account?{" "}
+           Nog geen account?{" "}
           <Link
             href="/signup"
             className="font-medium text-blue-600 hover:underline"
           >
-            Sign up
+            Registreer
           </Link>
         </p>
       </div>
