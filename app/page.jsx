@@ -19,7 +19,7 @@ export default function Home() {
           </a>
           <a
             className="h-32 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-            href="/Calendar"
+            href="/calendar"
           >
             kalender
           </a>

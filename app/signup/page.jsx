@@ -1,21 +1,11 @@
 import Link from "next/link";
 
-export default function login() {
+export default function signup() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden" style={{ backgroundImage: "url('/login_bg.png')", height: '400px' }}>
      
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
-      <a href="/" className="flex items-center justify-center
-      ">
-          <img
-            src="/pfp.png"
-            className="h-16 w-16 mr-3"
-            alt="Logo"
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            TimeGrid
-          </span>
-        </a>
+        <h1 className="text-3xl font-bold text-center text-gray-700">Logo</h1>
         <form className="mt-6">
           <div className="mb-4">
             <label

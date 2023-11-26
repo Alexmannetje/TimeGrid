@@ -1,6 +1,6 @@
 import NavBar from "@/components/navbar";
 
-export default function Login() {
+export default function login() {
   return (
     <div>
       <NavBar />
@@ -459,7 +459,7 @@ export default function Login() {
 
 // const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-// const Calendar: FunctionComponent = () => {
+// const calendar: FunctionComponent = () => {
 //     const date = new Date();
 //     const [month, setMonth] = useState(date.getMonth());
 //     const [year, setYear] = useState(date.getFullYear());
@@ -678,4 +678,4 @@ export default function Login() {
 //     );
 // };
 
-// export default Calendar;
+// export default calendar;
