@@ -2,7 +2,7 @@ export default function NavBar() {
   return (
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" className="flex items-center">
+        <a href="/home" className="flex items-center">
           <img
             src="/pfp.png"
             className="h-8 mr-3"
@@ -23,7 +23,7 @@ export default function NavBar() {
           >
             <li>
               <a
-                href="/"
+                href="/home"
                 className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                 aria-current="page"
               >

@@ -5,7 +5,7 @@ export default function signup() {
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden" style={{ backgroundImage: "url('/login_bg.png')", height: '400px' }}>
      
       <div className="w-full p-6 bg-white rounded-md shadow-md lg:max-w-xl">
-      <a href="/" className="flex items-center justify-center">
+      <a href="/home" className="flex items-center justify-center">
           <img
             src="/pfp.png"
             className="h-16 w-16 mr-3"
