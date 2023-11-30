@@ -1,13 +1,14 @@
+"use client";
+
+import { Menu } from "@headlessui/react";
+import ProfileButton from "./profilebutton";
+
 export default function NavBar() {
   return (
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/home" className="flex items-center">
-          <img
-            src="/pfp.png"
-            className="h-8 mr-3"
-            alt="Logo"
-          />
+          <img src="/pfp.png" className="h-8 mr-3" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             TimeGrid
           </span>
@@ -67,7 +68,7 @@ export default function NavBar() {
           </ul>
         </div>
         <div className="md:order-2">
-          <a
+          {/* <a
             href="/login"
             className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
           >
@@ -76,7 +77,9 @@ export default function NavBar() {
               src="/pfp.png"
               alt="user photo"
             />
-          </a>
+          </a> */}
+
+          <ProfileButton />
         </div>
       </div>
     </nav>
