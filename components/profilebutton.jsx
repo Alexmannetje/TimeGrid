@@ -120,7 +120,7 @@ export default function ProfileButton() {
                           aria-hidden="true"
                         />
                       )}
-                      Move
+                      Settings
                     </button>
                   )}
                 </Menu.Item>
