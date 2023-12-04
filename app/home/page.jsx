@@ -9,6 +9,8 @@ export default function Home() {
     user && (
       <div>
         <NavBar />
+
+
         <div className="container mx-auto flex justify-between">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mt-16 flex-1">
             <a
