@@ -1,3 +1,5 @@
+import Hero from "@/components/hero";
+
 export default function Main() {
   return (
     <section className="text-gray-600 body-font">
