@@ -5,7 +5,7 @@ export default function calendar() {
     <div>
       <NavBar />
 
-      <body>
+      
         <div className="container mx-auto mt-10">
           <div className="wrapper bg-white rounded shadow w-full ">
             <div className="header flex justify-between border-b p-2">
@@ -423,7 +423,7 @@ export default function calendar() {
             </table>
           </div>
         </div>
-      </body>
+      
     </div>
   );
 }

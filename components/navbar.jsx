@@ -2,13 +2,14 @@
 
 import { Menu } from "@headlessui/react";
 import ProfileButton from "./profilebutton";
+import Image from "next/image";
 
 export default function NavBar() {
   return (
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
-          <img src="/TimeGrid_Logo.png" className="h-8 mr-3" alt="Logo" />
+          <Image src="/TimeGrid_Logo.png" className="mr-3" alt="Logo" width={32} height={32} />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             TimeGrid
           </span>

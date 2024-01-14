@@ -3,6 +3,7 @@
 
 import NavBar from "@/components/navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
 export default function Home() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -18,8 +19,10 @@ export default function Home() {
               href="/"
             >
               profile
-              <img
-                className="w-24 h-24 rounded-full"
+              <Image
+                className="rounded-full"
+                width={64}
+                height={64}
                 src={user.imageUrl || null}
                 alt="user photo"
               />
