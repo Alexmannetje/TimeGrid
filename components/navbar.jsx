@@ -7,8 +7,8 @@ export default function NavBar() {
   return (
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/home" className="flex items-center">
-          <img src="/pfp.png" className="h-8 mr-3" alt="Logo" />
+        <a href="/" className="flex items-center">
+          <img src="/TimeGrid_Logo.png" className="h-8 mr-3" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             TimeGrid
           </span>
@@ -24,11 +24,11 @@ export default function NavBar() {
           >
             <li>
               <a
-                href="/home"
+                href="/dashboard"
                 className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                 aria-current="page"
               >
-                Home
+                dashboard
               </a>
             </li>
             <li>
@@ -74,7 +74,7 @@ export default function NavBar() {
           >
             <img
               className="w-8 h-8 rounded-full"
-              src="/pfp.png"
+              src="/TimeGrid_Logo.png"
               alt="user photo"
             />
           </a> */}

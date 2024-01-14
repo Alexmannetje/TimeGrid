@@ -128,14 +128,7 @@ export default function calendar() {
                         <span className="text-gray-500">1</span>
                       </div>
                       <div className="bottom flex-grow h-30 py-1 w-full cursor-pointer">
-                        <div className="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
-                          <span className="event-name">test </span>
-                          <span className="time">12:00~14:00</span>
-                        </div>
-                        <div className="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
-                          <span className="event-name">test </span>
-                          <span className="time">18:00~20:00</span>
-                        </div>
+                        
                       </div>
                     </div>
                   </td>
@@ -177,10 +170,7 @@ export default function calendar() {
                         <span className="text-gray-500">7</span>
                       </div>
                       <div className="bottom flex-grow h-30 py-1 w-full cursor-pointer">
-                        <div className="event bg-blue-400 text-white rounded p-1 text-sm mb-1">
-                          <span className="event-name">test </span>
-                          <span className="time">12:00~14:00</span>
-                        </div>
+                       
                       </div>
                     </div>
                   </td>
