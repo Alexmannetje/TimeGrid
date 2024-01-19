@@ -1,6 +1,5 @@
 "use client";
 
-import { Menu } from "@headlessui/react";
 import ProfileButton from "./profilebutton";
 import Image from "next/image";
 
@@ -9,7 +8,13 @@ export default function NavBar() {
     <nav className="bg-gray-100 border-gray-200 dark:bg-gray-900 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center">
-          <Image src="/TimeGrid_Logo.png" className="mr-3" alt="Logo" width={32} height={32} />
+          <Image
+            src="/TimeGrid_Logo.png"
+            className="mr-3"
+            alt="Logo"
+            width={32}
+            height={32}
+          />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             TimeGrid
           </span>
@@ -24,17 +29,16 @@ export default function NavBar() {
           >
             <li>
               <a
+                className="text-white bg-gray-700 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-gray-800 dark:hover:bg-gray-900 dark:focus:ring-gray-800"
                 href="/dashboard"
-                className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                aria-current="page"
               >
-                dashboard
+                Dashboard
               </a>
             </li>
             <li>
               <a
                 href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Test
               </a>
@@ -42,7 +46,7 @@ export default function NavBar() {
             <li>
               <a
                 href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Test
               </a>
@@ -50,7 +54,7 @@ export default function NavBar() {
             <li>
               <a
                 href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-900 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Test
               </a>
@@ -58,7 +62,7 @@ export default function NavBar() {
             <li>
               <div className="flex ">
                 <a
-                  className="text-white bg-violet-500 hover:bg-violet-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white bg-gray-700 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-gray-800 dark:hover:bg-gray-900 dark:focus:ring-gray-800"
                   href="/calendar"
                 >
                   Calendar
