@@ -16,24 +16,21 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mt-16 flex-1">
             <a
               className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-              href="/"
+              href="/calendar"
             >
-              profile
-              <Image
-                className="rounded-full"
-                width={64}
-                height={64}
-                src={user.imageUrl || null}
-                alt="user photo"
-              />
+              The Grid
             </a>
             <a
               className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-              href="/calendar"
+              href="/"
             >
-              calendar
+              New activity
             </a>
+
             <div>
+              <div>
+
+              </div>
               {/* <article className="flex items-center gap-4 rounded-lg h-32 p-6 sm:justify-between">
                 <span className="rounded-full bg-blue-100 p-3 text-blue-600 sm:order-last">
                   <svg
@@ -73,11 +70,21 @@ export default function Home() {
               </article> */}
             </div>
 
+            <a
+              className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
+              href="/"
+            >
+              profile
+              <Image
+                className="rounded-full"
+                width={64}
+                height={64}
+                src={user.imageUrl || null}
+                alt="user photo"
+              />
+            </a>
             <div className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
               settings
-            </div>
-            <div className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
-              contact
             </div>
 
             <a></a>
@@ -87,27 +94,12 @@ export default function Home() {
         <footer className="bg-gray-100 rounded-lg shadow-md m-12 dark:bg-gray-800 max-w-screen-2xl mx-auto">
           <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              <a href="/logo">©</a> 2023{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
+
+              <a href="/logo" className="hover:underline">
                 TimeGrid™
               </a>
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  Licensing
-                </a>
-              </li>
               <li>
                 <a onClick={() => signOut(() => router.push("/"))} className="hover:underline">
                   Sign out
