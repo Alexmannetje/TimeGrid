@@ -1,6 +1,6 @@
-
 "use client";
 
+import { EvervaultCard, Icon } from "@/components/evervault";
 import NavBar from "@/components/navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
@@ -13,10 +13,10 @@ export default function Home() {
       <div>
         <NavBar />
         <div className="container mx-auto flex justify-between">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8 mt-16 flex-1">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-16 flex-1">
             <a
               className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-              href="/calendar"
+              href="/grid"
             >
               The Grid
             </a>
@@ -27,9 +27,15 @@ export default function Home() {
               New activity
             </a>
 
-            <div>
-              <div>
-
+            <div className="text-center">
+              <div className="text-5xl font-extrabold text-blue-800 pr-40">
+                Welcome
+              </div>
+              <div className="text-5xl font-extrabold text-gray-700">
+                {user.firstName}
+              </div>
+              <div className="text-5xl font-extrabold text-gray-700 pl-32">
+                {user.lastName}
               </div>
               {/* <article className="flex items-center gap-4 rounded-lg h-32 p-6 sm:justify-between">
                 <span className="rounded-full bg-blue-100 p-3 text-blue-600 sm:order-last">
@@ -56,8 +62,8 @@ export default function Home() {
                 </div>
               </article> */}
             </div>
-            <div>
-              {/* <article className="flex items-center gap-4 h-32 rounded-lg p-6 sm:justify-between">
+            {/* <div>
+               <article className="flex items-center gap-4 h-32 rounded-lg p-6 sm:justify-between">
                 <div></div>
 
                 <div>
@@ -67,8 +73,7 @@ export default function Home() {
 
                   <p className="text-sm text-gray-500">Gewerkte uren</p>
                 </div>
-              </article> */}
-            </div>
+            </div> */}
 
             <a
               className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
@@ -86,22 +91,25 @@ export default function Home() {
             <div className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
               settings
             </div>
-
-            <a></a>
+            <div className="h-40 rounded-3xl flex items-center gap-4 border-2 border-blue-100 sm:justify-between">
+              <EvervaultCard text="settings" />
+            </div>
           </div>
         </div>
 
         <footer className="bg-gray-100 rounded-lg shadow-md m-12 dark:bg-gray-800 max-w-screen-2xl mx-auto">
           <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-
               <a href="/logo" className="hover:underline">
                 TimeGrid™
               </a>
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
               <li>
-                <a onClick={() => signOut(() => router.push("/"))} className="hover:underline">
+                <a
+                  onClick={() => signOut(() => router.push("/"))}
+                  className="hover:underline"
+                >
                   Sign out
                 </a>
               </li>

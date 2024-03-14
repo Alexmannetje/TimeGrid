@@ -1,6 +1,6 @@
 import NavBar from "@/components/navbar";
 
-export default function calendar() {
+export default function grid() {
   return (
     <div>
       <NavBar />
@@ -443,7 +443,7 @@ export default function calendar() {
 
 // const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-// const calendar: FunctionComponent = () => {
+// const grid: FunctionComponent = () => {
 //     const date = new Date();
 //     const [month, setMonth] = useState(date.getMonth());
 //     const [year, setYear] = useState(date.getFullYear());
@@ -461,7 +461,7 @@ export default function calendar() {
 //         let i;
 //         let daysInMonth = new Date(year, month + 1, 0).getDate();
 
-//         // find where to start calendar day of week
+//         // find where to start grid day of week
 //         let dayOfWeek = new Date(year, month).getDay();
 //         let emptyDaysArray = [];
 //         for (i = 1; i <= dayOfWeek; i++) {
@@ -662,4 +662,4 @@ export default function calendar() {
 //     );
 // };
 
-// export default calendar;
+// export default grid;

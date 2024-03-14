@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
@@ -9,9 +9,8 @@ export default function Main() {
     <section className="text-gray-600 body-font">
       <div className="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center justify-center">
-
           <h1 className="mb-5 sm:text-6xl text-5xl items-center Avenir xl:w-2/2 text-gray-900">
-            Easy to use calendar.
+            Easy to use grid.
           </h1>
           {/* <div className="flex justify-center">
             <a
@@ -22,20 +21,21 @@ export default function Main() {
             </a>
           </div> */}
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            {
-              isSignedIn ? <a
+            {isSignedIn ? (
+              <a
                 href="/dashboard"
                 className="inline-flex items-center px-6 py-5 mt-2 font-medium text-2xl text-white transition duration-500 ease-in-out transform border rounded-lg bg-gray-900 "
               >
                 Dashboard →
-              </a> :
-                <a
-                  href="/login"
-                  className="inline-flex items-center px-6 py-5 mt-2 font-medium text-2xl text-white transition duration-500 ease-in-out transform border rounded-lg bg-gray-900 "
-                >
-                  Sign in or Log in →
-                </a>
-            }
+              </a>
+            ) : (
+              <a
+                href="/login"
+                className="inline-flex items-center px-6 py-5 mt-2 font-medium text-2xl text-white transition duration-500 ease-in-out transform border rounded-lg bg-gray-900 "
+              >
+                Sign in or Log in →
+              </a>
+            )}
           </div>
         </div>
         <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-48 md:pl-10">
