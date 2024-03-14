@@ -15,20 +15,16 @@ export default function Home() {
         <div className="container mx-auto flex justify-between">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-16 flex-1">
             <a
-              className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-              href="/grid"
-            >
-              The Grid
+              className="h-40"
+              href="/grid">
+              <EvervaultCard text="The Grid" />
             </a>
-            <a
-              className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
-              href="/"
-            >
-              New activity
-            </a>
+            <div className="h-40">
+              <EvervaultCard text="New Activity" />
+            </div>
 
             <div className="text-center">
-              <div className="text-5xl font-extrabold text-blue-800 pr-40">
+              <div className="text-5xl font-extrabold text-blue-800 pr-32">
                 Welcome
               </div>
               <div className="text-5xl font-extrabold text-gray-700">
@@ -76,22 +72,13 @@ export default function Home() {
             </div> */}
 
             <a
-              className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between"
+              className="h-40"
               href="/"
             >
-              profile
-              <Image
-                className="rounded-full"
-                width={64}
-                height={64}
-                src={user.imageUrl || null}
-                alt="user photo"
-              />
+              <EvervaultCard text="Profile" />
+
             </a>
-            <div className="h-40 rounded-lg bg-gray-200 flex items-center gap-4 border-2 border-gray-300 p-6 sm:justify-between">
-              settings
-            </div>
-            <div className="h-40 rounded-3xl flex items-center gap-4 border-2 border-blue-100 sm:justify-between">
+            <div className="h-40">
               <EvervaultCard text="settings" />
             </div>
           </div>
