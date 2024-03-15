@@ -12,14 +12,6 @@ export default function Main() {
           <h1 className="mb-5 sm:text-6xl text-5xl items-center Avenir xl:w-2/2 text-gray-900">
             Easy to use grid.
           </h1>
-          {/* <div className="flex justify-center">
-            <a
-              className="inline-flex items-center px-6 py-5 mt-2 font-medium text-2xl text-white transition duration-500 ease-in-out transform border rounded-lg bg-gray-900 "
-              href="/dashboard"
-            >
-              <span className="justify-center">Go to dashboard</span>
-            </a>
-          </div> */}
           <div className="mt-10 flex items-center justify-center gap-x-6">
             {isSignedIn ? (
               <a

@@ -1,19 +1,24 @@
 "use client";
 
-import { Card, Icon } from "@/components/card";
-import { PfCard } from "@/components/PfCard";
 import NavBar from "@/components/navbar";
-import { useClerk, useUser } from "@clerk/nextjs";
-import Image from "next/image";
+import Modal from "@/components/modal";
+import { Fragment, useState } from "react";
 
 export default function Home() {
-  const { isLoaded, isSignedIn, user } = useUser();
-  const { signOut } = useClerk();
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
-    user && (
-      <div>
-        <NavBar />
-      </div>
-    )
+    <Fragment>
+      <NavBar />
+      <button onClick={toggleModal}>
+      </button>
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+
+      </Modal>
+    </Fragment>
   );
 }
