@@ -1,6 +1,7 @@
 "use client";
 
-import { EvervaultCard, Icon } from "@/components/evervault";
+import { Card, Icon } from "@/components/card";
+import { PfCard } from "@/components/PfCard";
 import NavBar from "@/components/navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
@@ -14,13 +15,11 @@ export default function Home() {
         <NavBar />
         <div className="container mx-auto flex justify-between">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-16 flex-1">
-            <a
-              className="h-40"
-              href="/grid">
-              <EvervaultCard text="The Grid" />
+            <a className="h-40" href="/grid">
+              <Card text="The Grid" />
             </a>
             <div className="h-40">
-              <EvervaultCard text="New Activity" />
+              <Card text="New Activity" />
             </div>
 
             <div className="text-center">
@@ -71,15 +70,11 @@ export default function Home() {
                 </div>
             </div> */}
 
-            <a
-              className="h-40"
-              href="/"
-            >
-              <EvervaultCard text="Profile" />
-
+            <a className="h-40" href="/">
+              <PfCard text="Profile" />
             </a>
             <div className="h-40">
-              <EvervaultCard text="settings" />
+              <Card text="settings" />
             </div>
           </div>
         </div>
