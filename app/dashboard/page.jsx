@@ -32,30 +32,6 @@ export default function Home() {
               <div className="text-5xl font-extrabold text-gray-700 pl-32">
                 {user.lastName}
               </div>
-              {/* <article className="flex items-center gap-4 rounded-lg h-32 p-6 sm:justify-between">
-                <span className="rounded-full bg-blue-100 p-3 text-blue-600 sm:order-last">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </span>
-
-                <div>
-                  <p className="text-2xl font-medium text-gray-900">$242,56</p>
-
-                  <p className="text-sm text-gray-500">Brutto inkomen</p>
-                </div>
-              </article> */}
             </div>
             {/* <div>
                <article className="flex items-center gap-4 h-32 rounded-lg p-6 sm:justify-between">
@@ -70,7 +46,7 @@ export default function Home() {
                 </div>
             </div> */}
 
-            <a className="h-40" href="/">
+            <a className="h-40" href="/profile">
               <PfCard text="Profile" />
             </a>
             <div className="h-40">
@@ -82,18 +58,18 @@ export default function Home() {
         <footer className="bg-gray-100 rounded-lg shadow-md m-12 dark:bg-gray-800 max-w-screen-2xl mx-auto">
           <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              <a href="/logo" className="hover:underline">
+              <a href="/logo" className="hover:underline hover:text-blue-800">
                 TimeGrid™
               </a>
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
               <li>
-                <a
+                <button
                   onClick={() => signOut(() => router.push("/"))}
-                  className="hover:underline"
+                  className="hover:text-red-600 hover:underline"
                 >
                   Sign out
-                </a>
+                </button>
               </li>
             </ul>
           </div>
