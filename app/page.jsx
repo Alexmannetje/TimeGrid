@@ -47,7 +47,7 @@ export default function Main() {
               Contact us for support
             </h1>
             <h1 className="mb-9 text-2xl font-semibold text-gray-600">
-              Enter your email address and send your complaint.
+              Enter your email address to receive support.
             </h1>
             <input
               placeholder="name@example.com"
