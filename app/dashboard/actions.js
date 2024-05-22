@@ -27,3 +27,15 @@ export async function getTasksByUserEmail(userEmail) {
         throw new Error(`Error fetching tasks: ${error}`);
     }
 }
+
+export async function deleteTask(taskId) {
+    try {
+        await prisma.task.delete({
+            where: {
+                id: taskId,
+            },
+        });
+    } catch (error) {
+        throw new Error(`Error deleting task: ${error}`);
+    }
+}

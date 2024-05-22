@@ -5,7 +5,7 @@ import { PfCard } from "@/components/pfcard";
 import NavBar from "@/components/navbar";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { Fragment, useState, useEffect } from "react";
-import { insert_task, getTasksByUserEmail } from "./actions";
+import { insert_task, getTasksByUserEmail, deleteTask } from "./actions";
 import { toast } from "react-hot-toast";
 import prisma from "@/utils/db";
 
@@ -77,6 +77,17 @@ export default function Home() {
     }
   };
 
+  const handleDelete = async (taskId) => {
+    try {
+      await deleteTask(taskId);
+      setTasks(tasks.filter((task) => task.id !== taskId));
+      toast.success("Task deleted successfully!");
+    } catch (error) {
+      console.error("Failed to delete task:", error);
+      toast.error("Failed to delete task.");
+    }
+  };
+
   return (
     isLoaded && user && (
       <div>
@@ -109,16 +120,20 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mx-20">
+        <div className="flex flex-col gap-4 mx-20 mt-16">
           {tasks.map((task) => (
             <div
               key={task.id}
-              className={`p-4 border-4 rounded-md shadow-sm border-${task.taskcolor}-200`}
+              className={`relative flex items-center justify-between px-4 py-2 rounded-lg shadow-sm border-4 max-w-xs bg-${task.taskcolor}-200`}
+              style={{ borderColor: task.taskcolor }}
             >
-              <h2 className="text-lg font-bold">{task.taskname}</h2>
-              <p>{task.task_datetime}</p>
-              <p>{task.taskdescription}</p>
-              {console.log("Task color:", task.taskcolor)}
+              <h2 className="text-lg font-bold text-black">{task.taskname}</h2>
+              <button
+                onClick={() => handleDelete(task.id)}
+                className={`text-black rounded-full p-2 bg-${task.taskcolor}-400`}
+              >
+                X
+              </button>
             </div>
           ))}
         </div>
