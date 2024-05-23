@@ -32,7 +32,7 @@ export const PfCard = ({ text, className }) => {
         <div className="relative h-44 rounded-full flex items-center justify-center text-white font-bold text-2xl">
           <span className="flex dark:text-white text-black z-20 items-center justify-center">
             <img
-              className="w-16 h-16 rounded-full"
+              className="w-10 h-10 rounded-full"
               src={user.imageUrl || null}
               alt="user photo"
             />

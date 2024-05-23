@@ -28,6 +28,20 @@ export async function getTasksByUserEmail(userEmail) {
     }
 }
 
+
+export const updateTask = async (taskId, taskData) => {
+  try {
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: taskData,
+    });
+    return updatedTask;
+  } catch (error) {
+    console.error("Error updating task:", error);
+    throw error;
+  }
+};
+
 export async function deleteTask(taskId) {
     try {
         await prisma.task.delete({
