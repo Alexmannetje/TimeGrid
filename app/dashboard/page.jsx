@@ -4,9 +4,15 @@ import { Card, Icon } from "@/components/card";
 import { PfCard } from "@/components/pfcard";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { Fragment, useState, useEffect } from "react";
-import { insert_task, getTasksByUserEmail, updateTask, deleteTask,} from "./actions";
+import {
+  insert_task,
+  getTasksByUserEmail,
+  updateTask,
+  deleteTask,
+} from "./actions";
 import { toast } from "react-hot-toast";
 import prisma from "@/utils/db";
+import ProfileButton from "@/components/profilebutton";
 
 export default function Home() {
   const { user, isLoaded } = useUser();
@@ -195,33 +201,27 @@ export default function Home() {
     user && (
       <div>
         <div className="container mx-auto flex">
-          <div className="w-1/3 p-4">
-            <div className="text-center mt-8">
-              <div className="text-5xl font-extrabold text-blue-800 pr-32">
-                Welcome
-              </div>
-              <div className="text-5xl font-extrabold text-gray-700">
-                {user.firstName}
-              </div>
-              <div className="text-5xl font-extrabold text-gray-700 pl-16 mb-4">
-                {user.lastName}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <a className="h-16" href="/grid">
-                <Card text="The Grid" />
-              </a>
-              <button className="h-16" onClick={toggleModal}>
-                <Card text="New Task" />
-              </button>
-              <a className="h-16" href="/profile">
-                <PfCard text="Profile" />
-              </a>
-              <a className="h-16" href="/settings">
-                <Card text="Settings" />
-              </a>
-            </div>
-          </div>
+        <div className="w-1/3 p-4 mx-auto">
+      <div className="text-center mt-8">
+        <div className="text-5xl font-extrabold text-blue-800">
+          Welcome
+        </div>
+        <div className="text-5xl font-extrabold text-gray-700 mt-2">
+          {user.firstName} {user.lastName}
+        </div>
+      </div>
+      <div className="flex flex-col gap-6 mt-8">
+        <a className="h-16" href="/grid">
+          <Card text="The Grid" />
+        </a>
+        <button className="h-16" onClick={toggleModal}>
+          <Card text="New Task" />
+        </button>
+      </div>
+      <div className="flex justify-center mt-8">
+        <ProfileButton width="64px" height="64px" />
+      </div>
+    </div>
           <div className="flex-1 p-4">
             <div className="p-6 mt-8 ml-12 rounded-xl border-blue-200 border-2 bg-gray-50 min-h-screen">
               <div className="max-w-4xl mx-auto">
@@ -246,41 +246,7 @@ export default function Home() {
                           <p className="text-gray-600 truncate pr-2">
                             {new Date(task.taskdatetime).toLocaleString()}
                           </p>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleDropdown(task.id);
-                            }}
-                            className={`text-gray-800 rounded-full px-3 py-1 bg-gray-50 hover:bg-gray-100 transition text-sm`}
-                          >
-                            &#x22EE; {/* 3 vertical dots */}
-                          </button>
                         </div>
-                        {dropdownOpen === task.id && (
-                          <div className="absolute top-full right-0 mt-1 w-32 bg-white rounded-md shadow-lg z-20">
-                            <div
-                              className="py-1"
-                              role="menu"
-                              aria-orientation="vertical"
-                              aria-labelledby="options-menu"
-                            >
-                              <button
-                                onClick={() => handleEditTask(task)}
-                                className="block px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-                                role="menuitem"
-                              >
-                                Edit Task
-                              </button>
-                              <button
-                                onClick={() => handleDelete(task.id)}
-                                className="block px-2 py-1 text-sm text-red-700 hover:bg-gray-100 hover:text-red-900 w-full text-left"
-                                role="menuitem"
-                              >
-                                Delete Task
-                              </button>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     </div>
                   ))}
@@ -533,7 +499,7 @@ export default function Home() {
         )}
         {showTaskDetailsModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg">
+            <div className="bg-white rounded-lg shadow-lg max-w-full mx-4">
               <div className="flex justify-between items-center bg-gray-200 rounded-t-lg p-4">
                 <h2 className="text-xl font-semibold text-gray-800">
                   {selectedTask.taskname}
@@ -559,7 +525,7 @@ export default function Home() {
                 </button>
               </div>
               <div className="p-4">
-                <p className="text-gray-700 mb-2">
+                <p className="text-gray-700 mb-2 break-words">
                   {selectedTask.taskdescription}
                 </p>
                 <p className="text-gray-700 mb-4">
@@ -583,7 +549,6 @@ export default function Home() {
             </div>
           </div>
         )}
-
         {showEditModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
             <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
