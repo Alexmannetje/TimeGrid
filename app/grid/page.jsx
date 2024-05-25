@@ -1,13 +1,35 @@
 "use client"
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import NavBar from "@/components/navbar";
+import { getTasksByUserEmail } from "@/app/dashboard/actions"; // Import the function to fetch tasks
+import { useUser } from "@clerk/nextjs";
+import { toast } from "react-hot-toast";
 
-export default function Calendar({ tasks = [] }) {
+export default function Calendar() {
   const [date, setDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const { user, isLoaded } = useUser();
+
+  useEffect(() => {
+    if (isLoaded && user) {
+      fetchTasks();
+    }
+  }, [isLoaded, user]);
+
+  const fetchTasks = async () => {
+    try {
+      const userTasks = await getTasksByUserEmail(
+        user.primaryEmailAddress.emailAddress
+      );
+      setTasks(userTasks);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+      toast.error("Failed to fetch tasks.");
+    }
+  };
 
   const monthNames = [
     "January", "February", "March", "April", "May", "June",
@@ -88,9 +110,6 @@ export default function Calendar({ tasks = [] }) {
     return weeks;
   };
 
-  console.log('Selected Day:', selectedDay);
-  console.log('Tasks:', tasks);
-
   return (
     <div>
       <NavBar />
@@ -135,7 +154,7 @@ export default function Calendar({ tasks = [] }) {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M8 15A7 70 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
                     />
                     <path
                       fillRule="evenodd"
@@ -171,21 +190,23 @@ export default function Calendar({ tasks = [] }) {
             </table>
           </div>
         </div>
-        {isModalOpen && (
+        {isModalOpen && selectedDay !== null && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white p-6 rounded-lg shadow-md max-w-md">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">Day {selectedDay} - {monthNames[date.getMonth()]} {date.getFullYear()}</h2>
-                <button className="text-gray-600 hover:text-gray-800 focus:outline-none" onClick={() => setIsModalOpen(false)}>
+                <button
+                  className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                  onClick={() => setIsModalOpen(false)}
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
               <div className="grid grid-cols-1 gap-4">
-                {console.log('Filtered Tasks:', tasks.filter(task => new Date(task.taskdatetime).getDate() === selectedDay))}
                 {tasks
-                  .filter(task => new Date(task.taskdatetime).getDate() === selectedDay)
+                  .filter((task) => new Date(task.taskdatetime).getDate() === selectedDay)
                   .map((task) => (
                     <div
                       key={task.id}
@@ -211,17 +232,9 @@ export default function Calendar({ tasks = [] }) {
           </div>
         )}
       </div>
-    
-  );
+    );
 }
 
 Calendar.propTypes = {
-  tasks: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      taskname: PropTypes.string.isRequired,
-      taskdatetime: PropTypes.string.isRequired,
-      taskcolor: PropTypes.string
-    })
-  )
+  tasks: PropTypes.array,
 };
