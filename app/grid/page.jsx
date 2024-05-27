@@ -127,7 +127,7 @@ export default function Calendar() {
                 tasksByDate[dayKey].map((task) => (
                   <div
                     key={task.id}
-                    className="w-2 h-2 rounded-full mx-auto mt-1"
+                    className="h-2 align-middle rounded-full mx-2 mt-1"
                     style={{ backgroundColor: task.taskcolor }}
                   ></div>
                 ))}
@@ -508,7 +508,7 @@ export default function Calendar() {
                     style={{ borderColor: task.taskcolor }}
                   >
                     <div className="w-2/3">
-                      <h2 className="text-lg font-semibold text-gray-300 truncate mr-8">
+                      <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-300 truncate mr-8">
                         {task.taskname}
                       </h2>
                     </div>
