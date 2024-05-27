@@ -461,6 +461,7 @@ export default function Calendar() {
             </ul>
           </div>
         </div>
+        <div className="h-4 dark:bg-gray-800"></div>
       </div>
       {isModalOpen && selectedDay !== null && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">

@@ -214,7 +214,7 @@ export default function Home() {
   return (
     isLoaded &&
     user && (
-      <div className="dark:bg-gray-800">
+      <div className="dark:bg-gray-800 min-h-screen">
         <div className="container mx-auto flex">
           <div className="w-1/3 p-4 mx-auto">
             <div className="text-center mt-8">
@@ -289,6 +289,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
+        <div className="h-4 dark:bg-gray-800"></div>
 
         {showModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
