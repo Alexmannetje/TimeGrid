@@ -30,12 +30,26 @@ export default function Home() {
   const [editTaskId, setEditTaskId] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
   const [showTaskDetailsModal, setShowTaskDetailsModal] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (isLoaded && user) {
       fetchTasks();
     }
   }, [isLoaded, user]);
+
+  useEffect(() => {
+    const currentMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(currentMode);
+    document.documentElement.classList.toggle("dark", currentMode);
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode);
+    document.documentElement.classList.toggle("dark", newMode);
+  };
 
   const fetchTasks = async () => {
     try {
@@ -50,12 +64,14 @@ export default function Home() {
 
   const TaskModal = ({ task, onClose }) => (
     <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
-      <div className="bg-white p-8 rounded-lg max-w-3xl">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+      <div className="bg-white dark:bg-gray-900 p-8 rounded-lg max-w-3xl">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
           {task.taskname}
         </h2>
-        <p className="text-gray-600">{task.taskdescription}</p>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-400">
+          {task.taskdescription}
+        </p>
+        <p className="text-gray-600 dark:text-gray-400">
           {new Date(task.taskdatetime).toLocaleString()}
         </p>
         <button
@@ -198,33 +214,33 @@ export default function Home() {
   return (
     isLoaded &&
     user && (
-      <div>
+      <div className="dark:bg-gray-800">
         <div className="container mx-auto flex">
-        <div className="w-1/3 p-4 mx-auto">
-      <div className="text-center mt-8">
-        <div className="text-5xl font-extrabold text-blue-800">
-          Welcome
-        </div>
-        <div className="text-5xl font-extrabold text-gray-700 mt-2">
-          {user.firstName} {user.lastName}
-        </div>
-      </div>
-      <div className="flex flex-col gap-6 mt-8">
-        <a className="h-16" href="/grid">
-          <Card text="The Grid" />
-        </a>
-        <button className="h-16" onClick={toggleModal}>
-          <Card text="New Task" />
-        </button>
-      </div>
-      <div className="flex justify-center mt-8">
-        <ProfileButton width="64px" height="64px" />
-      </div>
-    </div>
+          <div className="w-1/3 p-4 mx-auto">
+            <div className="text-center mt-8">
+              <div className="text-5xl font-extrabold text-blue-800 dark:text-blue-600">
+                Welcome
+              </div>
+              <div className="text-5xl font-extrabold text-gray-700 dark:text-gray-400 mt-2">
+                {user.firstName} {user.lastName}
+              </div>
+            </div>
+            <div className="flex flex-col gap-6 mt-8">
+              <a className="h-16" href="/grid">
+                <Card text="The Grid" />
+              </a>
+              <button className="h-16" onClick={toggleModal}>
+                <Card text="New Task" />
+              </button>
+            </div>
+            <div className="flex justify-center mt-8">
+              <ProfileButton width="64px" height="64px" />
+            </div>
+          </div>
           <div className="flex-1 p-4">
-            <div className="p-6 mt-8 ml-12 rounded-xl border-blue-200 border-2 bg-gray-50 min-h-screen">
+            <div className="p-6 mt-8 ml-12 rounded-xl border-blue-200 dark:border-gray-600 border-2 bg-gray-50 dark:bg-gray-900 ">
               <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-400 mb-6">
                   Upcoming Tasks
                 </h1>
                 <div className="grid grid-cols-1 gap-4">
@@ -232,17 +248,17 @@ export default function Home() {
                     <div
                       key={task.id}
                       onClick={() => handleTaskClick(task)}
-                      className={`cursor-pointer relative flex items-center justify-between p-2 border-l-4 border-2 rounded-lg shadow-lg`}
+                      className={`cursor-pointer relative flex items-center justify-between p-2 border-l-4 border-2 rounded-lg shadow-lg dark:border-gray-600`}
                       style={{ borderColor: task.taskcolor }}
                     >
                       <div className="w-2/3">
-                        <h2 className="text-lg font-semibold text-gray-800 truncate">
+                        <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 truncate">
                           {task.taskname}
                         </h2>
                       </div>
                       <div className="relative">
                         <div className="flex items-center">
-                          <p className="text-gray-600 truncate pr-2">
+                          <p className="text-gray-600 dark:text-gray-400 truncate pr-2">
                             {new Date(task.taskdatetime).toLocaleString()}
                           </p>
                         </div>
@@ -254,10 +270,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        <footer className="bg-gray-100 rounded-lg shadow-md m-20 dark:bg-gray-800 my-20">
+        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md m-20 mb-10">
           <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
               <a href="/logo" className="hover:underline hover:text-blue-800">
                 TimeGrid™
               </a>
@@ -273,7 +288,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-        </footer>
+        </div>
 
         {showModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
@@ -497,58 +512,58 @@ export default function Home() {
           </div>
         )}
         {showTaskDetailsModal && (
-  <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
-    <div className="bg-white rounded-lg shadow-lg max-w-md w-full mx-4">
-      <div className="bg-gray-200 rounded-t-lg p-4 flex justify-between items-center">
-        <div>
-          <h2 className="text-xl font-semibold text-gray-800">
-            {selectedTask.taskname}
-          </h2>
-          <p className="text-sm text-gray-600">
-            {new Date(selectedTask.taskdatetime).toLocaleString()}
-          </p>
-        </div>
-        <button
-          onClick={handleCloseTaskDetailsModal}
-          className="text-gray-600 hover:text-gray-800 focus:outline-none"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-      <div className="p-4">
-        <p className="text-gray-700 mb-4 break-words">
-          {selectedTask.taskdescription}
-        </p>
-        <div className="flex justify-end">
-          <button
-            onClick={() => handleEditTask(selectedTask)}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => handleDelete(selectedTask.id)}
-            className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
+            <div className="bg-white rounded-lg shadow-lg max-w-md w-full mx-4">
+              <div className="bg-gray-200 rounded-t-lg p-4 flex justify-between items-center">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-800">
+                    {selectedTask.taskname}
+                  </h2>
+                  <p className="text-sm text-gray-600">
+                    {new Date(selectedTask.taskdatetime).toLocaleString()}
+                  </p>
+                </div>
+                <button
+                  onClick={handleCloseTaskDetailsModal}
+                  className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="p-4">
+                <p className="text-gray-700 mb-4 break-words">
+                  {selectedTask.taskdescription}
+                </p>
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => handleEditTask(selectedTask)}
+                    className="px-4 py-2 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(selectedTask.id)}
+                    className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
         {showEditModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">

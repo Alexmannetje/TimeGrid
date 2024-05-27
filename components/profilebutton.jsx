@@ -2,7 +2,7 @@
 
 import { useClerk, useUser } from "@clerk/nextjs";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const icons = {
@@ -40,11 +40,25 @@ export default function ProfileButton({ width = "40px", height = "40px" }) {
   const { isLoaded, isSignedIn, user } = useUser();
   const { signOut } = useClerk();
   const router = useRouter();
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const currentMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(currentMode);
+    document.documentElement.classList.toggle("dark", currentMode);
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode);
+    document.documentElement.classList.toggle("dark", newMode);
+  };
 
   if (!user) return null;
 
   const menuItems = [
-    { name: "Settings", onClick: null },
+    { name: "Toggle Dark Mode", onClick: toggleDarkMode },
     { name: "Sign out", onClick: () => signOut(() => router.push("/")) },
   ];
 

@@ -24,7 +24,7 @@ export const Card = ({ text, className }) => {
     >
       <div
         onMouseMove={onMouseMove}
-        className="group/card rounded-3xl border-4 border-blue-200 hover:border-blue-300 w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
+        className="group/card rounded-3xl border-4 dark:border-gray-600 dark:hover:border-gray-700 border-blue-200 hover:border-blue-300 w-full relative overflow-hidden bg-transparent flex items-center justify-center h-full"
       >
         <CardPattern mouseX={mouseX} mouseY={mouseY} />
         <div className="relative h-44 w-44 rounded-full flex items-center justify-center text-white font-bold text-2xl">
@@ -43,7 +43,7 @@ export function CardPattern({ mouseX, mouseY }) {
     <div className="pointer-events-none">
       <div className="absolute inset-0 rounded-2xl  [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
       <motion.div
-        className="absolute inset-0  bg-gradient-to-r from-gray-300 to-gray-300 opacity-0  group-hover/card:opacity-100 backdrop-blur-lg transition duration-500"
+        className="absolute inset-0  bg-gradient-to-r from-gray-900 to-gray-900 opacity-0  group-hover/card:opacity-100 backdrop-blur-lg transition duration-500"
         style={style}
       />
     </div>

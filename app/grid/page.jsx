@@ -94,7 +94,12 @@ export default function Calendar() {
     });
 
     for (let i = 0; i < firstDayOfMonth; i++) {
-      days.push(<td key={`empty-start-${i}`} className="border p-1 h-40"></td>);
+      days.push(
+        <td
+          key={`empty-start-${i}`}
+          className="border dark:border-gray-700 p-1 h-40"
+        ></td>
+      );
     }
 
     for (let day = 1; day <= totalDays; day++) {
@@ -110,10 +115,10 @@ export default function Calendar() {
       days.push(
         <td
           key={day}
-          className="border p-1 h-40 transition cursor-pointer duration-500 ease hover:bg-gray-300"
+          className="border dark:border-gray-700 p-1 h-40 transition cursor-pointer duration-500 ease hover:bg-gray-300 dark:hover:bg-gray-800"
           onClick={() => handleDayClick(day)}
         >
-          <div className="flex flex-col h-40 overflow-hidden">
+          <div className="flex dark:border-gray-700 flex-col h-40 overflow-hidden">
             <div className="top h-5 w-full">
               <span className="text-gray-500">{day}</span>
             </div>
@@ -134,7 +139,10 @@ export default function Calendar() {
 
     while (days.length < 7) {
       days.push(
-        <td key={`empty-end-${days.length}`} className="border p-1 h-40"></td>
+        <td
+          key={`empty-end-${days.length}`}
+          className="border dark:broder-gray-700 p-1 h-40"
+        ></td>
       );
     }
     weeks.push(
@@ -310,17 +318,17 @@ export default function Calendar() {
   tasks.sort((a, b) => new Date(a.taskdatetime) - new Date(b.taskdatetime));
 
   return (
-    <div>
+    <div className="dark:bg-gray-800">
       <nav className="bg-gray-200 dark:bg-gray-900 shadow-md">
         <div className="max-w-screen-xl mx-auto p-4 flex items-center justify-between">
           <a href="/dashboard" className="flex items-center">
             <Image src="/TimeGrid_Logo.png" alt="Logo" width={36} height={36} />
-            <span className="text-3xl ml-2 font-bold text-gray-800 dark:text-white">
+            <span className="text-3xl ml-2 font-bold text-gray-800 dark:text-gray-500">
               TimeGrid
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-9 w-8 text-gray-800 dark:text-white"
+              className="h-9 w-8 text-gray-800 dark:text-gray-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -336,7 +344,7 @@ export default function Calendar() {
 
           <button
             type="button"
-            className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white inline-flex items-center bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-44 text-center dark:bg-gray-600 dark:hover:bg-gray-700"
             onClick={toggleModal}
           >
             <svg
@@ -358,9 +366,9 @@ export default function Calendar() {
           </div>
         </div>
       </nav>
-      <div className="container mx-auto mt-10">
-        <div className="wrapper bg-white rounded shadow w-full">
-          <div className="header flex justify-between border-b p-2">
+      <div className="container mx-auto my-10 rounded-lg">
+        <div className="wrapper bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white rounded-lg shadow w-full">
+          <div className="header flex justify-between border-b dark:border-gray-700 p-2">
             <span className="text-lg font-bold">
               {date.getFullYear()} {monthNames[date.getMonth()]}
             </span>
@@ -419,12 +427,12 @@ export default function Calendar() {
                 {daysOfWeek.map((day) => (
                   <th
                     key={day}
-                    className="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 xl:text-sm text-xs"
+                    className="p-2 border-r h-10 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 dark:border-gray-700 xl:text-sm text-xs"
                   >
-                    <span className="xl:block lg:block md:block sm:block hidden">
+                    <span className="xl:block dark:border-gray-700 lg:block md:block sm:block hidden">
                       {day}
                     </span>
-                    <span className="xl:hidden lg:hidden md:hidden sm:hidden block">
+                    <span className="xl:hidden dark:border-gray-700 lg:hidden md:hidden sm:hidden block">
                       {day.slice(0, 3)}
                     </span>
                   </th>
@@ -434,22 +442,40 @@ export default function Calendar() {
             <tbody>{renderCalendar()}</tbody>
           </table>
         </div>
+        <div className="bg-gray-100 dark:bg-gray-900 rounded-lg shadow-md m-20 mb-10">
+          <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
+              <a href="/logo" className="hover:underline hover:text-blue-800">
+                TimeGrid™
+              </a>
+            </span>
+            <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+              <li>
+                <button
+                  onClick={() => signOut()}
+                  className="hover:text-red-600 hover:underline"
+                >
+                  Sign out
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       {isModalOpen && selectedDay !== null && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-md max-w-md">
+          <div className="bg-white dark:bg-gray-800 dark:text-gray-400 p-6 rounded-lg shadow-md max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold">
-                Day {selectedDay} - {monthNames[date.getMonth()]}{" "}
-                {date.getFullYear()}
+                {selectedDay} {monthNames[date.getMonth()]} {date.getFullYear()}
               </h2>
               <button
-                className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
                 onClick={() => setIsModalOpen(false)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="h-6 w-6 dark:"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -477,17 +503,17 @@ export default function Calendar() {
                   <div
                     key={task.id}
                     onClick={() => handleTaskClick(task)}
-                    className={`cursor-pointer relative flex items-center justify-between p-2 border-l-4 border-2 rounded-lg shadow-lg`}
+                    className={`cursor-pointer relative flex items-center justify-between  p-2 border-l-4 border-2 rounded-lg shadow-lg`}
                     style={{ borderColor: task.taskcolor }}
                   >
                     <div className="w-2/3">
-                      <h2 className="text-lg font-semibold text-gray-800 truncate">
+                      <h2 className="text-lg font-semibold text-gray-300 truncate mr-8">
                         {task.taskname}
                       </h2>
                     </div>
                     <div className="relative">
                       <div className="flex items-center">
-                        <p className="text-gray-600 truncate pr-2">
+                        <p className="text-gray-400 truncate pr-2">
                           {new Date(task.taskdatetime).toLocaleString()}
                         </p>
                       </div>
@@ -502,7 +528,7 @@ export default function Calendar() {
         <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div
-              className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+              className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
               aria-hidden="true"
             ></div>
             <span
@@ -513,15 +539,15 @@ export default function Calendar() {
               className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full modal"
               style={{ zIndex: 9999 }}
             >
-              <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:border-gray-600">
+              <div className="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:bg-gray-900 dark:border-gray-600">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Create New Task
                   </h3>
                   <button
                     onClick={toggleModal}
                     type="button"
-                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
+                    className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
                     data-modal-toggle="crud-modal"
                   >
                     <svg
@@ -609,7 +635,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="yellow"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "yellow" ? "ring ring-yellow-500" : ""
                           }`}
                           style={{ backgroundColor: "yellow" }}
@@ -621,7 +647,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="red"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "red" ? "ring ring-red-500" : ""
                           }`}
                           style={{ backgroundColor: "red" }}
@@ -633,7 +659,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="blue"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "blue" ? "ring ring-blue-500" : ""
                           }`}
                           style={{ backgroundColor: "blue" }}
@@ -645,7 +671,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="green"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "green" ? "ring ring-green-500" : ""
                           }`}
                           style={{ backgroundColor: "green" }}
@@ -657,7 +683,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="black"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "black" ? "ring ring-black" : ""
                           }`}
                           style={{ backgroundColor: "black" }}
