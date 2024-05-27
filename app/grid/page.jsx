@@ -323,12 +323,12 @@ export default function Calendar() {
         <div className="max-w-screen-xl mx-auto p-4 flex items-center justify-between">
           <a href="/dashboard" className="flex items-center">
             <Image src="/TimeGrid_Logo.png" alt="Logo" width={36} height={36} />
-            <span className="text-3xl ml-2 font-bold text-gray-800 dark:text-gray-500">
+            <span className="text-3xl ml-2 font-bold text-gray-800 dark:text-gray-400">
               TimeGrid
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-9 w-8 text-gray-800 dark:text-gray-500"
+              className="h-9 w-8 text-gray-800 dark:text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -744,20 +744,20 @@ export default function Calendar() {
         </div>
       )}
       {showTaskDetailsModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-lg max-w-md w-full mx-4">
-            <div className="bg-gray-200 rounded-t-lg p-4 flex justify-between items-center">
+        <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-black bg-opacity-50">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full mx-4">
+            <div className="bg-gray-200 dark:bg-gray-900 rounded-t-lg p-4 flex justify-between items-center">
               <div>
-                <h2 className="text-xl font-semibold text-gray-800">
+                <h2 className="text-xl font-semibold dark:text-gray-300 text-gray-800">
                   {selectedTask.taskname}
                 </h2>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm dark:text-gray-500 text-gray-600">
                   {new Date(selectedTask.taskdatetime).toLocaleString()}
                 </p>
               </div>
               <button
                 onClick={handleCloseTaskDetailsModal}
-                className="text-gray-600 hover:text-gray-800 focus:outline-none"
+                className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -776,13 +776,13 @@ export default function Calendar() {
               </button>
             </div>
             <div className="p-4">
-              <p className="text-gray-700 mb-4 break-words">
+              <p className="text-gray-700 dark:text-gray-300 mb-4 break-words">
                 {selectedTask.taskdescription}
               </p>
               <div className="flex justify-end">
                 <button
                   onClick={() => handleEditTask(selectedTask)}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="px-4 py-2 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 dark:bg-gray-600 dark:hover:bg-gray-700 rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
                 >
                   Edit
                 </button>
@@ -801,7 +801,7 @@ export default function Calendar() {
         <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
           <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div
-              className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+              className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
               aria-hidden="true"
             ></div>
             <span
@@ -812,15 +812,15 @@ export default function Calendar() {
               className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full modal"
               style={{ zIndex: 9999 }}
             >
-              <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:border-gray-600">
+              <div className="relative bg-white rounded-lg shadow dark:bg-gray-800">
+                <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:bg-gray-900 dark:border-gray-600">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     Edit Task
                   </h3>
                   <button
-                    onClick={() => setShowEditModal(false)}
+                    onClick={toggleEditModal}
                     type="button"
-                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
+                    className="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-button"
                     data-modal-toggle="crud-modal"
                   >
                     <svg
@@ -906,7 +906,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="yellow"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "yellow" ? "ring ring-yellow-500" : ""
                           }`}
                           style={{ backgroundColor: "yellow" }}
@@ -918,7 +918,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="red"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "red" ? "ring ring-red-500" : ""
                           }`}
                           style={{ backgroundColor: "red" }}
@@ -930,7 +930,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="blue"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "blue" ? "ring ring-blue-500" : ""
                           }`}
                           style={{ backgroundColor: "blue" }}
@@ -942,7 +942,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="green"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "green" ? "ring ring-green-500" : ""
                           }`}
                           style={{ backgroundColor: "green" }}
@@ -954,7 +954,7 @@ export default function Calendar() {
                         <button
                           type="button"
                           id="black"
-                          className={`w-6 h-6 border border-gray-300 rounded-full focus:outline-none ${
+                          className={`w-6 h-6 border dark:border-gray-800 border-gray-300 rounded-full focus:outline-none ${
                             taskcolor === "black" ? "ring ring-black" : ""
                           }`}
                           style={{ backgroundColor: "black" }}
