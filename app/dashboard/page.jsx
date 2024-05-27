@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, Icon } from "@/components/card";
-import { PfCard } from "@/components/pfcard";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { Fragment, useState, useEffect } from "react";
 import {
@@ -232,11 +231,11 @@ export default function Home() {
                   {tasks.map((task) => (
                     <div
                       key={task.id}
-                      onClick={() => handleTaskClick(task)} // Use handleTaskClick instead of toggleDropdown
+                      onClick={() => handleTaskClick(task)}
                       className={`cursor-pointer relative flex items-center justify-between p-2 border-l-4 border-2 rounded-lg shadow-lg`}
                       style={{ borderColor: task.taskcolor }}
                     >
-                      <div className="w-3/4 pr-4">
+                      <div className="w-2/3">
                         <h2 className="text-lg font-semibold text-gray-800 truncate">
                           {task.taskname}
                         </h2>
@@ -292,7 +291,7 @@ export default function Home() {
                 style={{ zIndex: 9999 }}
               >
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:border-gray-600">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                       Create New Task
                     </h3>
@@ -498,56 +497,58 @@ export default function Home() {
           </div>
         )}
         {showTaskDetailsModal && (
-          <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
-            <div className="bg-white rounded-lg shadow-lg max-w-full mx-4">
-              <div className="flex justify-between items-center bg-gray-200 rounded-t-lg p-4">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  {selectedTask.taskname}
-                </h2>
-                <button
-                  onClick={handleCloseTaskDetailsModal}
-                  className="text-gray-600 hover:text-gray-800 focus:outline-none"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div className="p-4">
-                <p className="text-gray-700 mb-2 break-words">
-                  {selectedTask.taskdescription}
-                </p>
-                <p className="text-gray-700 mb-4">
-                  {new Date(selectedTask.taskdatetime).toLocaleString()}
-                </p>
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => handleEditTask(selectedTask)}
-                    className="px-4 py-2 mr-2 text-sm font-medium text-gray-800 bg-gray-200 hover:bg-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(selectedTask.id)}
-                    className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div className="fixed inset-0 z-50 overflow-y-auto flex justify-center items-center bg-gray-800 bg-opacity-50">
+    <div className="bg-white rounded-lg shadow-lg max-w-md w-full mx-4">
+      <div className="bg-gray-200 rounded-t-lg p-4 flex justify-between items-center">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-800">
+            {selectedTask.taskname}
+          </h2>
+          <p className="text-sm text-gray-600">
+            {new Date(selectedTask.taskdatetime).toLocaleString()}
+          </p>
+        </div>
+        <button
+          onClick={handleCloseTaskDetailsModal}
+          className="text-gray-600 hover:text-gray-800 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="p-4">
+        <p className="text-gray-700 mb-4 break-words">
+          {selectedTask.taskdescription}
+        </p>
+        <div className="flex justify-end">
+          <button
+            onClick={() => handleEditTask(selectedTask)}
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 rounded-md mr-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => handleDelete(selectedTask.id)}
+            className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
         )}
         {showEditModal && (
           <div className="fixed inset-0 z-50 overflow-y-auto" id="wrapper">
@@ -565,7 +566,7 @@ export default function Home() {
                 style={{ zIndex: 9999 }}
               >
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                  <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t bg-gray-200 dark:border-gray-600">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                       Edit Task
                     </h3>

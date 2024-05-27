@@ -1,5 +1,4 @@
 import './globals.css'
-import NavBar from '@/components/navbar'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
